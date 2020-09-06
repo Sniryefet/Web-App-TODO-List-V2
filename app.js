@@ -29,13 +29,17 @@ app.post("/", function (req, res) {
 
 app.post("/delete", function (req, res) {
   const checkedItemID = req.body.checkbox;
-  console.log(checkedItemID);
+  
   Item.findByIdAndRemove(checkedItemID, function (err) {
     if (!err) {
       console.log("successfully deleted the item");
       res.redirect("/");
     }
+
   });
+
+ 
+
 });
 
 app.get("/work", function (req, res) {
