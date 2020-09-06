@@ -1,11 +1,22 @@
 
 
+
 const mongoose = require("mongoose");
+
 const Schema = mongoose.Schema;
-const TaskSchema= new Schema({
+const ItemSchema= new Schema({
     name:{type: String, required:true}
 
 });
 
-const Model = mongoose.model("TodoList",TaskSchema);
-module.exports = Model;
+const Item = mongoose.model("TodoList",ItemSchema);
+module.exports.Item = Item;
+
+
+const listSchema = {
+    name:String,
+    items:[ItemSchema]
+};
+
+const List = mongoose.model("List",listSchema);
+module.exports.List = List;
